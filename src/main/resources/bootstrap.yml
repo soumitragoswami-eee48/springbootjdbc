@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: SpringBootJDBC
+  
+    
+info:
+    app: 
+        name: SpringBootJDBC
+        project: SpringBootJDBCExample
+        version: ${version}
+

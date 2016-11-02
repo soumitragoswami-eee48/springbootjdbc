@@ -9,6 +9,8 @@ import com.Broadsoft.model.StudentModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,12 +28,13 @@ import org.springframework.util.StringUtils;
 public class StudentRepository {
         
      
-        
+    private static final Logger LOGGER = LoggerFactory.getLogger(StudentRepository.class);
     
     @Autowired
     protected JdbcTemplate jdbc;
 
     public List<StudentModel> getUser() {
+          LOGGER.info("Query is :---> SELECT * FROM student"); 
         return jdbc.query("SELECT * FROM student",new StudentRowMapper());
        
     }
@@ -43,6 +46,7 @@ public class StudentRepository {
      */
     public List<StudentModel> getUsers(String ids) {
        // System.out.println(ids);
+       LOGGER.info("Query is :---> SELECT * FROM student WHERE id in (?) "); 
         return jdbc.query("SELECT * FROM student WHERE id in (?)",new String []{ids}, new BeanPropertyRowMapper(StudentModel.class));
     }   
     

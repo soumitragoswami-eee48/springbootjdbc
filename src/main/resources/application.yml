@@ -1,0 +1,23 @@
+## YAML Template.
+---
+spring:
+  zipkin:
+      baseUrl : http://localhost:9411/
+  sleuth:
+      sampler: 
+         percentage: 1.0
+  datasource:
+    url: jdbc:mysql://localhost/springbootdb
+    username: root
+    password:
+    driverClassName: org.mariadb.jdbc.Driver
+server:
+   port: 6001
+
+info: 
+  app:
+   name: SpringBootJDBC
+   project: A Sample Micro-Service
+   version: ${version}
+
+  
